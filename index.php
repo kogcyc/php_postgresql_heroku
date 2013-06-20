@@ -1,10 +1,9 @@
 <?php
+ 
+	if ($db = new SQLiteDatabase('filename')) {
 
-// Show all information, defaults to INFO_ALL
-phpinfo();
+		$q = @$db->query('CREATE TABLE IF NOT EXISTS tablename (id int, requests int, PRIMARY KEY (id))';
 
-// Show just the module information.
-// phpinfo(8) yields identical results.
-phpinfo(INFO_MODULES);
+	}
 
 ?>

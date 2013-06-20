@@ -1,0 +1,9 @@
+<?php
+    if ($db = new SQLiteDatabase('filename')) {
+// first let the engine check table, and create it eventualy
+           $q = @$db->query('CREATE TABLE IF NOT EXISTS tablename (id int, requests int, PRIMARY KEY (id))';
+
+//the rest of the code, according error checks etc
+// ...
+
+?>
