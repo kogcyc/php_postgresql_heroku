@@ -7,7 +7,7 @@ $sql = "CREATE TABLE IF NOT EXISTS post (
 	content VARCHAR(2000) NOT NULL
 )";
 
-$sq = $db->query($sql);
+$sq = $dbh->query($sql);
 
 if ($sq) {
 	echo 'created';
