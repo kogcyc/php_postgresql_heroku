@@ -15,7 +15,7 @@
 	$title = "Hello!";
 	$content = "Wow, that is kool!"
 
-    $sql = "INSERT INTO entries (title, content) VALUES (?, ?)"; 
+    $sql = "INSERT INTO post (title, content) VALUES (?, ?)"; 
     $stmt = $dbh->prepare($sql); 
     $stmt->execute(array($title, $content)); 
     $stmt->closeCursor();
