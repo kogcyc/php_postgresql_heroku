@@ -34,4 +34,19 @@ pg_free_result($result);
 // Closing connection
 pg_close($db);
 
+if (getenv('DATABASE_URL')) {
+    if (!preg_match('#postgres://([^:]*):([^@]*)@([^/:]*)(:\d+)?/(.*)#', strval(getenv('DATABASE_URL')), $matches)) {
+        $user = $matches[1];
+        $pass = $matches[2];
+        $host = $matches[3];
+        $port = ltrim($matches[4], ':') ?: 1486;
+        $dbname = $matches[5];
+        echo $user;
+        echo $pass;
+        echo $host;
+        echo $port; 
+        echo $dbname;
+    }   
+}
+
 ?> 
