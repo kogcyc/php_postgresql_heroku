@@ -2,7 +2,8 @@
 
 $db = pg_connect("host='ec2-23-21-129-81.compute-1.amazonaws.com' port=5432 dbname='dcir2s1etumpn0' user='eqaptmujihyujc' password='qt-tywWshY0yYPNpkAaClGYD5D'");
 
-$query = 'CREATE TABLE posts (content text);';
+//$query = 'CREATE TABLE posts (content text);';
+$query = 'seledt * from posts;';
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 // Printing results in HTML
