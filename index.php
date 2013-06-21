@@ -9,6 +9,12 @@ $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 $query = "INSERT INTO posts (content) VALUES ('hello');";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
+for ($i=1; $i<=200; $i++)
+  {
+  $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+  }
+?>
+
 $query = "SELECT * FROM posts;";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
