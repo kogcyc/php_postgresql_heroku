@@ -13,7 +13,7 @@
 	//$content = htmlentities($_POST['content']);
 
 	$title = "Hello!";
-	$content = "Wow, that is kool!"
+	$content = "Wow, that is kool!";
 
     $sql = "INSERT INTO post (title, content) VALUES (?, ?)"; 
     $stmt = $dbh->prepare($sql); 
