@@ -8,15 +8,15 @@ $result2 = pg_execute($db, "my_query", array(""));
 
 echo $db;
 
-echo "<br>"
+echo "<br>";
 
 echo $result1;
 
-echo "<br>"
+echo "<br>";
 
 echo $result2;
 
-echo "<br>"
+echo "<br>";
 
 echo "done";
 
