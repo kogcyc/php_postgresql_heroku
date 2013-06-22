@@ -1,6 +1,20 @@
 <?php
 
-$db = pg_connect("host='ec2-23-21-129-81.compute-1.amazonaws.com' port=5432 dbname='dcir2s1etumpn0' user='eqaptmujihyujc' password='qt-tywWshY0yYPNpkAaClGYD5D'");
+$url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
+
+$host = $url["host"];
+$port = $url["port"];
+$user = $url["user"];
+$password = $url["pass"];
+$dbname = substr($url["path"],1);
+
+$connect_string = "host='" . $host . "' ";
+$connect_string = $connect_string . "port=" . $port . " ";
+$connect_string = $connect_string . "user='" . $user . "' ";
+$connect_string = $connect_string . "password='" . $password . "' ";
+$connect_string = $connect_string . "dbname='" . $dbname . "' ";
+
+$db = pg_connect($connect_string);
 
 //$query = 'CREATE TABLE posts (content text);';
 $query = "DELETE FROM posts;";
@@ -33,34 +47,5 @@ pg_free_result($result);
 
 // Closing connection
 pg_close($db);
-
-$url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
-
-$host = $url["host"];
-$port = $url["port"];
-$user = $url["user"];
-$password = $url["pass"];
-$dbname = substr($url["path"],1);
-
-echo $user; echo "<br>";
-echo $password; echo "<br>";
-echo $host; echo "<br>";
-echo $port; echo "<br>";
-echo $dbname; echo "<br>";
-
-//$connect_string = ""
-$connect_string = "host='" . $host . "' ";
-$connect_string = $connect_string . "port=" . $port . " ";
-$connect_string = $connect_string . "user='" . $user . "' ";
-$connect_string = $connect_string . "password='" . $password . "' ";
-$connect_string = $connect_string . "dbname='" . $dbname . "' ";
-
-//$connect_string = $dbname  ;
-
-echo $connect_string; echo "<br>";
-
-
-
-
 
 ?> 
