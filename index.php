@@ -1,7 +1,8 @@
 <?php
 
-//create a connection string from the PG database URl and then use it to connect
 
+
+//create a connection string from the PG database URL and then use it to connect
 $url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
 
 $host = $url["host"];
@@ -18,6 +19,8 @@ $connect_string = $connect_string . "dbname='" . $dbname . "' ";
 
 $db = pg_connect($connect_string);
 
+
+
 //$query = 'CREATE TABLE posts (content text);';
 $query = "DELETE FROM posts;";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
@@ -33,7 +36,9 @@ for ($i=1; $i<=2; $i++)
 $query = "SELECT * FROM posts;";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-// Printing results in HTML
+
+
+// print the results in HTML
 echo "<table>\n";
 while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo "\t<tr>\n";
@@ -44,10 +49,16 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 }
 echo "</table>\n";
 
-// Free resultset
+
+
+// free resultset
 pg_free_result($result);
 
-// Closing connection
+
+
+// close connection
 pg_close($db);
+
+
 
 ?> 
