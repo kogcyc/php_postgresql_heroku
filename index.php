@@ -50,4 +50,6 @@ echo $db;
 
 echo getenv("DATABASE_URL");
 
+echo "done";
+
 ?> 
