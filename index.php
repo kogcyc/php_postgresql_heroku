@@ -55,7 +55,7 @@ $connect_string = ""
 //$connect_string = $connect_string . "password='" . $password . "' ";
 //$connect_string = $connect_string . "dbname='" . $dbname . "' ";
 
-$connect_string = $connect_string . "dbname=" . $dbname  ;
+$connect_string = "dbname=" . $dbname  ;
 
 echo $connect_string; echo "<br>";
 
