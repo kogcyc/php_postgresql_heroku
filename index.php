@@ -1,5 +1,7 @@
 <?php
 
+//create a connection string from the PG database URl and then use it to connect
+
 $url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
 
 $host = $url["host"];
@@ -25,7 +27,7 @@ $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 for ($i=1; $i<=2; $i++)
   {
-  $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
   }
 
 $query = "SELECT * FROM posts;";
