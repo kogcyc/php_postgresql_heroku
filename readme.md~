@@ -20,7 +20,7 @@ heroku addons:add heroku-postgresql
 
 ```
 
-Once the PG add-on is done you can issue this command:
+Once the PG add-on is done, then you can issue this command:
 
 ```bash
 $ heroku config
@@ -28,7 +28,7 @@ $ heroku config
 HEROKU_POSTGRESQL_GREEN_URL: postgres://<user>:<password>@<host>:5432/<dbname>
 
 ```
-which will show you the database URL which includes user, password, host, port and dbname.
+which will show you the database URL which includess user, password, host, port and dbname.
 
 Be sure that the name of the URL variable returned matched that in the .php file.
 
