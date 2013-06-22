@@ -42,10 +42,10 @@ $user = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"],1);
 
-echo $user;
-echo $password;
-echo $host;
-echo $port; 
-echo $db;
+echo $user; echo "<br>";
+echo $password; echo "<br>";
+echo $host; echo "<br>";
+echo $port; echo "<br>";
+echo $db; echo "<br>";
 
 ?> 
