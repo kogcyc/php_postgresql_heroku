@@ -34,26 +34,18 @@ pg_free_result($result);
 // Closing connection
 pg_close($db);
 
-function pg_connection_string_from_database_url() {
-  extract(parse_url($_ENV["DATABASE_URL"]));
-  return "user=$user password=$pass host=$host dbname=" . substr($path, 1); # <- you may want to add sslmode=require there too
-}
+$url=parse_url(getenv("DATABASE_URL"));
 
-echo pg_connection_string_from_database_url();
+$host = $url["host"];
+$port = $url["port"];
+$user = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"],1);
 
-if (getenv('DATABASE_URL')) {
-    if (!preg_match('#postgres://([^:]*):([^@]*)@([^/:]*)(:\d+)?/(.*)#', strval(getenv('DATABASE_URL')), $matches)) {
-        $user = $matches[1];
-        $pass = $matches[2];
-        $host = $matches[3];
-        $port = ltrim($matches[4], ':') ?: 1486;
-        $dbname = $matches[5];
-        echo $user;
-        echo $pass;
-        echo $host;
-        echo $port; 
-        echo $dbname;
-    }   
-}
+echo $user;
+echo $password;
+echo $host;
+echo $port; 
+echo $db;
 
 ?> 
