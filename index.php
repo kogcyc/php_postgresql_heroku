@@ -48,4 +48,6 @@ echo $host;
 echo $port; 
 echo $db;
 
+echo getenv("DATABASE_URL");
+
 ?> 
