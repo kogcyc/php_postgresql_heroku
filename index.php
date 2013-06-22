@@ -34,7 +34,7 @@ pg_free_result($result);
 // Closing connection
 pg_close($db);
 
-$url=parse_url(getenv("DATABASE_URL"));
+$url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
 
 $host = $url["host"];
 $port = $url["port"];
@@ -47,9 +47,5 @@ echo $password;
 echo $host;
 echo $port; 
 echo $db;
-
-echo getenv("DATABASE_URL");
-
-echo "done";
 
 ?> 
