@@ -49,11 +49,13 @@ echo $port; echo "<br>";
 echo $db; echo "<br>";
 
 $connect_string = ""
-$connect_string = $connect_string . "host='" . $host . "' ";
-$connect_string = $connect_string . "port=" . $port . " ";
-$connect_string = $connect_string . "user='" . $user . "' ";
-$connect_string = $connect_string . "password='" . $password . "' ";
-$connect_string = $connect_string . "dbname='" . $dbname . "' ";
+//$connect_string = $connect_string . "host='" . $host . "' ";
+//$connect_string = $connect_string . "port=" . $port . " ";
+//$connect_string = $connect_string . "user='" . $user . "' ";
+//$connect_string = $connect_string . "password='" . $password . "' ";
+//$connect_string = $connect_string . "dbname='" . $dbname . "' ";
+
+$connect_string = $connect_string . "dbname=" . $dbname  ;
 
 echo $connect_string; echo "<br>";
 
