@@ -8,12 +8,12 @@ The <b><i>index.php</i></b> included in this repo is designed to make php->Postg
 
 Here's an outline of what you need to do:
 
-<p>1) create a Heroku application</p>
-<p>2) add PostgreSQL on to that Heroku application</p>
-<p>3) create an <b><i>index.php</i></b> file</p>
-<p>4) find the Heroku database URL associated with the Heroku application</p>
-<p>5) modify the <b><i>index.php</i></b> file so that the database URL is correct</p>
-<p>6) push the application code to Heroku and run it</p>
+1) create a Heroku application<br>
+2) add PostgreSQL on to that Heroku application<br>
+3) create an <b><i>index.php</i></b> file<br>
+4) find the Heroku database URL associated with the Heroku application<br>
+5) modify the <b><i>index.php</i></b> file so that the database URL is correct<br>
+6) push the application code to Heroku and run it<br>
 
 Let' go through steps one by one:
 
