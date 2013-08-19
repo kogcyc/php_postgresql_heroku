@@ -1,37 +1,84 @@
 # Using php and PostgreSQL on Heroku
 
-It's pretty simple: an index.php file is all that is require, codewise.
+If the file <b><i>index.php</i></b> exists in a git push to Heroku, Heroku will set up a php environment in which it will be run.
 
-Then add the PG add-on.
+If you want your php script to have access to a database on Heroku, you have to make accomodations for using PostgreSQL, Heroku's standard relational database.
 
-Here's the bash:
+The <b><i>index.php</i></b> included in this repo is designed to make php->PostgreSQL->Heroku easy.
 
+Here's an outline of what you need to do:
+
+1) create a Heroku application
+2) add PostgreSQL on to that Heroku application
+3) create an <b><i>index.php</i></b> file
+4) find the Heroku database URL associated with the Heroku application
+5) modify the <b><i>index.php</i></b> file so that the database URL is correct
+6) push the application code to Heroku and run it
+
+Let' go through steps one by one:
+
+1) create a Heroku application
 ```bash
 mkdir -appname-
 cd -appname-/
-cat > index.php 
+heroku create -appname-
+
+```
+
+2) add PostgreSQL on to that Heroku application
+```bash
+heroku addons:add heroku-postgresql --app -appname-
+
+```
+
+3) create an <b><i>index.php</i></b> file
+```php
+<?php
+
+  //create a connection string from the PG database URL and then use it to connect
+  $url=parse_url(getenv("HEROKU_POSTGRESQL_GREEN_URL"));
+  
+  $host = $url["host"];
+  $port = $url["port"];
+  $user = $url["user"];
+  $password = $url["pass"];
+  $dbname = substr($url["path"],1);
+  
+  $connect_string = "host='" . $host . "' ";
+  $connect_string = $connect_string . "port=" . $port . " ";
+  $connect_string = $connect_string . "user='" . $user . "' ";
+  $connect_string = $connect_string . "password='" . $password . "' ";
+  $connect_string = $connect_string . "dbname='" . $dbname . "' ";
+  
+  $db = pg_connect($connect_string);
+  
+  pg_close($db);
+
+?> 
+```
+
+4) find the Heroku database URL associated with the Heroku application
+
+Run this command:
+```bash
+heroku config --app -appname-
+
+```
+and look at the URL that is returned, it will look something like this:
+
+  HEROKU_POSTGRESQL_PINK_URL: postgres://isdibegrtdvfww...
+
+In this case the URL is named using the color: <b><i>PINK</i></b>
+
+5) modify the <b><i>index.php</i></b> file so that the database URL is correct
+
+Edit the <b><i>index.php</i></b> to make the color in the php script match the color of the database URL.
+In this case change <b><i>GREEN</i></b> to <b><i>PINK</i></b>.
+
+6) push the application code to Heroku and run it
+```bash
 git init
 git add .
 git commit -m "init"
-heroku create -appname-
 git push heroku master
-
-heroku addons:add heroku-postgresql
-
 ```
-
-Once the PG add-on is done you can issue this command:
-
-```bash
-$ heroku config
-=== kogphp Config Vars
-HEROKU_POSTGRESQL_GREEN_URL: postgres://<user>:<password>@<host>:5432/<dbname>
-
-```
-which will show you the database URL which includes user, password, host, port and dbname.
-
-Be sure that the name of the URL variable returned matched that in the .php file.
-
-In this case it is: HEROKU_POSTGRESQL_GREEN_URL
-
-Then start processing, q u i c k l y.
